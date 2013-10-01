@@ -13,7 +13,9 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cairo-devel >= 1.10
 BuildRequires:	clutter-devel >= 1.15.94
-BuildRequires:	cogl-devel >= 1.13.3
+BuildRequires:	clutter-devel(evdev) >= 1.15.94
+BuildRequires:	cogl-devel >= 1.16.0-3
+BuildRequires:	cogl-devel(wayland) >= 1.16.0-3
 BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.26.0
@@ -75,7 +77,9 @@ Summary(pl.UTF-8):	Biblioteka współdzielona zarządcy okien Mutter
 Group:		Libraries
 Requires:	cairo >= 1.10
 Requires:	clutter >= 1.15.94
-Requires:	cogl >= 1.13.3
+Requires:	clutter(evdev) >= 1.15.94
+Requires:	cogl >= 1.16.0-3
+Requires:	cogl(wayland) >= 1.16.0-3
 Requires:	glib2 >= 1:2.26.0
 Requires:	gnome-desktop >= 3.0
 Requires:	gtk+3 >= 3.3.7
@@ -99,7 +103,9 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	cairo-devel >= 1.10
 Requires:	clutter-devel >= 1.15.94
-Requires:	cogl-devel >= 1.13.3
+Requires:	clutter-devel(evdev) >= 1.15.94
+Requires:	cogl-devel >= 1.16.0-3
+Requires:	cogl-devel(wayland) >= 1.16.0-3
 Requires:	glib2-devel >= 1:2.26.0
 Requires:	gtk+3-devel >= 3.3.7
 Requires:	libcanberra-gtk3-devel >= 0.26
@@ -152,8 +158,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_datadir}/gnome/wm-properties/mutter-wm.desktop
-
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
@@ -173,13 +177,14 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS HACKING MAINTAINERS NEWS README rationales.txt doc/theme-format.txt
-%attr(755,root,root) %{_bindir}/mutter
-%dir %{_libdir}/mutter/plugins
-%attr(755,root,root) %{_libdir}/mutter/plugins/default.so
-%{_desktopdir}/mutter.desktop
-%{?with_gnome2:%{_datadir}/gnome/wm-properties/mutter-wm.desktop}
+%attr(755,root,root) %{_bindir}/mutter-launch
+%attr(755,root,root) %{_bindir}/mutter-wayland
+%dir %{_libdir}/mutter-wayland/plugins
+%attr(755,root,root) %{_libdir}/mutter-wayland/plugins/default.so
+%{_desktopdir}/mutter-wayland.desktop
 %{_datadir}/GConf/gsettings/mutter-schemas.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-windows.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-navigation.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-system.xml
@@ -187,20 +192,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmutter.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmutter.so.0
-%dir %{_libdir}/mutter
+%attr(755,root,root) %{_libdir}/libmutter-wayland.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmutter-wayland.so.0
+%dir %{_libdir}/mutter-wayland
 # intentionally installed in package-private dir
-%{_libdir}/mutter/Meta-*.typelib
+%{_libdir}/mutter-wayland/Meta-*.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmutter.so
-%{_includedir}/mutter
+%attr(755,root,root) %{_libdir}/libmutter-wayland.so
+%{_includedir}/mutter-wayland
 # intentionally installed in package-private dir
-%{_libdir}/mutter/Meta-*.gir
-%{_pkgconfigdir}/libmutter.pc
-%{_pkgconfigdir}/mutter-plugins.pc
+%{_libdir}/mutter-wayland/Meta-*.gir
+%{_pkgconfigdir}/libmutter-wayland.pc
 
 %files apidocs
 %defattr(644,root,root,755)
