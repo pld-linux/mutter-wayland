@@ -1,4 +1,3 @@
-# NOTE: doesn't build currently - requires cogl with kms interface
 Summary:	Window and compositing manager based on Clutter
 Summary(pl.UTF-8):	Zarządca okien i składania oparty na bibliotece Clutter
 Name:		mutter-wayland
@@ -14,7 +13,7 @@ BuildRequires:	automake >= 1:1.11
 BuildRequires:	cairo-devel >= 1.10
 BuildRequires:	clutter-devel >= 1.15.94
 BuildRequires:	clutter-devel(evdev) >= 1.15.94
-BuildRequires:	cogl-devel >= 1.16.0-3
+BuildRequires:	cogl-devel(kms) >= 1.16.0-3
 BuildRequires:	cogl-devel(wayland) >= 1.16.0-3
 BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	gettext-devel
@@ -78,7 +77,7 @@ Group:		Libraries
 Requires:	cairo >= 1.10
 Requires:	clutter >= 1.15.94
 Requires:	clutter(evdev) >= 1.15.94
-Requires:	cogl >= 1.16.0-3
+Requires:	cogl(kms) >= 1.16.0-3
 Requires:	cogl(wayland) >= 1.16.0-3
 Requires:	glib2 >= 1:2.26.0
 Requires:	gnome-desktop >= 3.0
@@ -104,7 +103,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	cairo-devel >= 1.10
 Requires:	clutter-devel >= 1.15.94
 Requires:	clutter-devel(evdev) >= 1.15.94
-Requires:	cogl-devel >= 1.16.0-3
+Requires:	cogl-devel(kms) >= 1.16.0-3
 Requires:	cogl-devel(wayland) >= 1.16.0-3
 Requires:	glib2-devel >= 1:2.26.0
 Requires:	gtk+3-devel >= 3.3.7
@@ -145,8 +144,10 @@ Dokumentacja API Mutter (Meta).
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+# note: "--enable-compile-warnings=all" disables -Werror
 %configure \
 	ZENITY=/usr/bin/zenity \
+	--enable-compile-warnings=all \
 	--disable-silent-rules \
 	--disable-static \
 	--with-html-dir=%{_gtkdocdir}
