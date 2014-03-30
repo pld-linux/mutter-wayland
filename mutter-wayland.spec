@@ -1,20 +1,20 @@
 Summary:	Window and compositing manager based on Clutter
 Summary(pl.UTF-8):	Zarządca okien i składania oparty na bibliotece Clutter
 Name:		mutter-wayland
-Version:	3.10.4
+Version:	3.12.0
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter-wayland/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	a88d3d596e1d73261764d700d8f46f87
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter-wayland/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	06da690daab46b9de7025dae735dccd6
 URL:		http://git.gnome.org/cgit/mutter
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cairo-devel >= 1.10
-BuildRequires:	clutter-devel >= 1.15.94
-BuildRequires:	clutter-devel(evdev) >= 1.15.94
-BuildRequires:	cogl-devel(kms) >= 1.16.0-3
-BuildRequires:	cogl-devel(wayland) >= 1.16.0-3
+BuildRequires:	clutter-devel >= 1.17.5
+BuildRequires:	clutter-devel(evdev) >= 1.17.5
+BuildRequires:	cogl-devel(kms) >= 1.17.1
+BuildRequires:	cogl-devel(wayland) >= 1.17.1
 BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.26.0
@@ -36,7 +36,7 @@ BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	startup-notification-devel >= 0.7
 BuildRequires:	systemd-devel
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	upower-devel >= 0.9.12
+BuildRequires:	upower-devel >= 0.99.0
 BuildRequires:	wayland-devel
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
@@ -75,18 +75,18 @@ Summary:	Mutter shared library
 Summary(pl.UTF-8):	Biblioteka współdzielona zarządcy okien Mutter
 Group:		Libraries
 Requires:	cairo >= 1.10
-Requires:	clutter >= 1.15.94
-Requires:	clutter(evdev) >= 1.15.94
-Requires:	cogl(kms) >= 1.16.0-3
-Requires:	cogl(wayland) >= 1.16.0-3
+Requires:	clutter >= 1.17.5
+Requires:	clutter(evdev) >= 1.17.5
+Requires:	cogl(kms) >= 1.17.1
+Requires:	cogl(wayland) >= 1.17.1
 Requires:	glib2 >= 1:2.26.0
 Requires:	gnome-desktop >= 3.0
 Requires:	gtk+3 >= 3.3.7
 Requires:	libcanberra-gtk3 >= 0.26
 Requires:	startup-notification >= 0.7
-Requires:	upower-libs >= 0.9.12
+Requires:	upower-libs >= 0.99.0
 Requires:	xorg-lib-libXcomposite >= 0.2
-Requires:	xorg-lib-libXi >= 1.6
+Requires:	xorg-lib-libXi >= 1.7
 Conflicts:	mutter < 3.4.0-2
 
 %description libs
@@ -101,10 +101,10 @@ Summary(pl.UTF-8):	Pakiet programistyczny do wtyczek zarządcy okien Mutter
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	cairo-devel >= 1.10
-Requires:	clutter-devel >= 1.15.94
-Requires:	clutter-devel(evdev) >= 1.15.94
-Requires:	cogl-devel(kms) >= 1.16.0-3
-Requires:	cogl-devel(wayland) >= 1.16.0-3
+Requires:	clutter-devel >= 1.17.5
+Requires:	clutter-devel(evdev) >= 1.17.5
+Requires:	cogl-devel(kms) >= 1.17.1
+Requires:	cogl-devel(wayland) >= 1.17.1
 Requires:	glib2-devel >= 1:2.26.0
 Requires:	gtk+3-devel >= 3.3.7
 Requires:	libcanberra-gtk3-devel >= 0.26
@@ -177,7 +177,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS HACKING MAINTAINERS NEWS README rationales.txt doc/theme-format.txt
+%doc NEWS doc/{dialogs.txt,how-to-get-focus-right.txt,rationales.txt,theme-format.txt}
 %attr(755,root,root) %{_bindir}/mutter-launch
 %attr(755,root,root) %{_bindir}/mutter-wayland
 %dir %{_libdir}/mutter-wayland/plugins
