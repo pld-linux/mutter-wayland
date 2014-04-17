@@ -1,12 +1,12 @@
 Summary:	Window and compositing manager based on Clutter
 Summary(pl.UTF-8):	Zarządca okien i składania oparty na bibliotece Clutter
 Name:		mutter-wayland
-Version:	3.12.0
+Version:	3.12.1
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter-wayland/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	06da690daab46b9de7025dae735dccd6
+# Source0-md5:	036f65b86616d5c90187203cf5937d28
 URL:		http://git.gnome.org/cgit/mutter
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
