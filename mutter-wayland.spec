@@ -1,3 +1,4 @@
+# NOTE: merged into base mutter since 3.14
 Summary:	Window and compositing manager based on Clutter
 Summary(pl.UTF-8):	Zarządca okien i składania oparty na bibliotece Clutter
 Name:		mutter-wayland
