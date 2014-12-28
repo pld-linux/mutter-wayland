@@ -17,7 +17,7 @@ BuildRequires:	clutter-devel(evdev) >= 1.17.5
 BuildRequires:	cogl-devel(kms) >= 1.17.1
 BuildRequires:	cogl-devel(wayland) >= 1.17.1
 BuildRequires:	gdk-pixbuf2-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gnome-desktop-devel >= 3.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
